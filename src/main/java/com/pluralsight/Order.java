@@ -1,6 +1,10 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
+
 public class Order {
+    ArrayList<Pizza> pizzas;
+    ArrayList<DrinkMenu> drinks;
 //Order Screen - All entries should show the newest entries first
 //o 1) Add Pizza
 //o 2) Add Drink

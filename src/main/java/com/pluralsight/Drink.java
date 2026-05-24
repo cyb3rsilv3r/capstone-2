@@ -1,19 +1,13 @@
 package com.pluralsight;
 
 public class Drink {
-    String size;
-    String type;
+    DrinkSize size;
+    DrinkMenu type;
 
-    public Drink(String size, String type) {
+    public Drink(DrinkSize size, DrinkMenu type) {
         this.size = size;
         this.type = type;
     }
 
-    public String getSize() {
-        return size;
-    }
 
-    public String getType() {
-        return type;
-    }
 }

@@ -17,4 +17,16 @@ public enum DrinkMenu {
         this.mediumPrice = mediumPrice;
         this.largePrice = largePrice;
     }
+
+    public double getSmallPrice() {
+        return smallPrice;
+    }
+
+    public double getMediumPrice() {
+        return mediumPrice;
+    }
+
+    public double getLargePrice() {
+        return largePrice;
+    }
 }

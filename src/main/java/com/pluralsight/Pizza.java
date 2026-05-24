@@ -1,45 +1,51 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
+
 public class Pizza {
-    int size;
-    String crust;
-    String sauces;
-    String sides;
-    String topping;
+    PizzaSize size;
+    CrustType crust;
+    ArrayList<Sauces> sauces;
+    ArrayList<Sides> sides;
+    ArrayList<RegularToppings> regularToppings;
+    ArrayList<PremiumToppings> premiumToppings;
     boolean extraToppings;
     boolean crustStuffed;
 
 
-    public Pizza(int size, String crust, String sauces, String sides, String toppings, boolean extraToppings, boolean stuffCrust) {
+    public Pizza(PizzaSize size, CrustType crust, ArrayList<Sauces> sauces, ArrayList<Sides> sides, ArrayList<RegularToppings> regularToppings, ArrayList<PremiumToppings> premiumToppings, boolean extraToppings, boolean crustStuffed) {
         this.size = size;
         this.crust = crust;
         this.sauces = sauces;
         this.sides = sides;
-        this.topping = toppings;
+        this.regularToppings = regularToppings;
+        this.premiumToppings = premiumToppings;
         this.extraToppings = extraToppings;
-        this.crustStuffed = stuffCrust;
+        this.crustStuffed = crustStuffed;
     }
 
-
-    public int getSize() {
-
+    public PizzaSize getSize() {
         return size;
     }
 
-    public String getCrust() {
+    public CrustType getCrust() {
         return crust;
     }
 
-    public String getSauces() {
+    public ArrayList<Sauces> getSauces() {
         return sauces;
     }
 
-    public String getSides() {
+    public ArrayList<Sides> getSides() {
         return sides;
     }
 
-    public String getTopping() {
-        return topping;
+    public ArrayList<RegularToppings> getRegularToppings() {
+        return regularToppings;
+    }
+
+    public ArrayList<PremiumToppings> getPremiumToppings() {
+        return premiumToppings;
     }
 
     public boolean isExtraToppings() {
@@ -49,9 +55,7 @@ public class Pizza {
     public boolean isCrustStuffed() {
         return crustStuffed;
     }
-
-
-    }
+}
 
 
 
