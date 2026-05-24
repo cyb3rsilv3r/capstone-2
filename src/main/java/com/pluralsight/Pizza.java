@@ -3,25 +3,29 @@ package com.pluralsight;
 import java.util.ArrayList;
 
 public class Pizza {
+
     PizzaSize size;
     CrustType crust;
+
     ArrayList<Sauces> sauces;
     ArrayList<Sides> sides;
     ArrayList<RegularToppings> regularToppings;
     ArrayList<PremiumToppings> premiumToppings;
+
     boolean extraToppings;
     boolean crustStuffed;
 
+    public Pizza(PizzaSize size, CrustType crust, boolean extraToppings, boolean crustStuffed) {
 
-    public Pizza(PizzaSize size, CrustType crust, ArrayList<Sauces> sauces, ArrayList<Sides> sides, ArrayList<RegularToppings> regularToppings, ArrayList<PremiumToppings> premiumToppings, boolean extraToppings, boolean crustStuffed) {
         this.size = size;
         this.crust = crust;
-        this.sauces = sauces;
-        this.sides = sides;
-        this.regularToppings = regularToppings;
-        this.premiumToppings = premiumToppings;
         this.extraToppings = extraToppings;
         this.crustStuffed = crustStuffed;
+
+        this.sauces = new ArrayList<>();
+        this.sides = new ArrayList<>();
+        this.regularToppings = new ArrayList<>();
+        this.premiumToppings = new ArrayList<>();
     }
 
     public PizzaSize getSize() {
@@ -55,7 +59,21 @@ public class Pizza {
     public boolean isCrustStuffed() {
         return crustStuffed;
     }
+
+    public void addSauce(Sauces sauce) {
+        sauces.add(sauce);
+    }
+
+    public void addSide(Sides side) {
+        sides.add(side);
+    }
+
+    public void addRegularTopping(RegularToppings topping) {
+        regularToppings.add(topping);
+    }
+
+    public void addPremiumTopping(PremiumToppings topping) {
+        premiumToppings.add(topping);
+    }
+
 }
-
-
-
