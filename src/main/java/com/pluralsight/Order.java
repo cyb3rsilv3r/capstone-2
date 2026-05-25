@@ -9,13 +9,15 @@ public class Order {
     ArrayList<SideOrder> sideOrders;
 
     public Order(ArrayList<Pizza> pizzas, ArrayList<Drink> drinks, ArrayList<SideOrder> sideOrders) {
-        this.pizzas = pizzas;
-        this.drinks = drinks;
-        this.sideOrders = sideOrders;
+        this.pizzas = new ArrayList<>();
+        this.drinks = new ArrayList<>();
+        this.sideOrders = new ArrayList<>();
     }
 //empty constructor added to use in main
     public Order() {
-
+pizzas = new ArrayList<>();
+drinks = new ArrayList<>();
+sideOrders = new ArrayList<>();
     }
 
     // getters

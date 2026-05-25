@@ -76,4 +76,11 @@ public class Pizza {
         premiumToppings.add(topping);
     }
 
+
+    public String pizzaSummary() {
+        return "size: " + size +
+                "\nCrust: " + crust +
+                "\nRegular Toppings: " + regularToppings +
+                "\nPremium Toppings: " + premiumToppings;
+    }
 }

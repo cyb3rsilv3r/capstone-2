@@ -4,19 +4,24 @@ package com.pluralsight;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Order testOrder =  new Order();
-Pizza testPizza = new Pizza(
-        PizzaSize.MEDIUM,
-        CrustType.CAULIFLOWER,
-        false,
-        true
-);
-testPizza.addSide(Sides.PARMESAN);
-testPizza.addRegularTopping(RegularToppings.ONIONS);
-testPizza.addSauce(Sauces.BUFFALO);
-testPizza.addPremiumTopping(PremiumToppings.BACON);
+        Order testOrder = new Order();
+        Pizza testPizza = new Pizza(
+                PizzaSize.MEDIUM,
+                CrustType.CAULIFLOWER,
+                false,
+                true
+        );
+        testPizza.addSide(Sides.PARMESAN);
+        testPizza.addRegularTopping(RegularToppings.ONIONS);
+        testPizza.addSauce(Sauces.BUFFALO);
+        testPizza.addPremiumTopping(PremiumToppings.BACON);
 
- testOrder.addPizza(testPizza);
+        Drink testDrink = new Drink(DrinkSize.SMALL, DrinkMenu.DR_PEPPER);
 
-        }// end of psvm
-    }//end of main
+        testOrder.addDrinks(testDrink);
+        testOrder.addPizza(testPizza);
+        testOrder.addSideOrder(SideOrder.GARLIC_KNOTS);
+
+                System.out.println(testPizza.pizzaSummary());
+    }// end of psvm
+}//end of main
