@@ -29,4 +29,13 @@ public enum DrinkMenu {
     public double getLargePrice() {
         return largePrice;
     }
+    public double getPrice(DrinkSize size) {
+        if (size == DrinkSize.SMALL) {
+            return smallPrice;
+        } else if (size == DrinkSize.MEDIUM) {
+            return mediumPrice;
+        } else {
+            return largePrice;
+        }
+    }
 }

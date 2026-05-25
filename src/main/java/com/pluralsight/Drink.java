@@ -8,6 +8,8 @@ public class Drink {
         this.size = size;
         this.type = type;
     }
+
+    // to get price use an if statement to link prices to sizes
     public double drinkPrice() {
         double price;
         if (size == DrinkSize.SMALL) {
@@ -22,6 +24,10 @@ public class Drink {
             price =  type.getLargePrice();
             return price;
         }
+    }
+
+    public double getValue(){
+        return drinkPrice();
     }
 
 

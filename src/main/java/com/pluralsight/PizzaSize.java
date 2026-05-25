@@ -10,5 +10,8 @@ public enum PizzaSize {
     PizzaSize(double basePrice) {
         this.basePrice = basePrice;
     }
+    public double getPrice() {
+        return basePrice;
+    }
 
 }

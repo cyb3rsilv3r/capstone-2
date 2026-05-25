@@ -16,14 +16,34 @@ public enum PremiumToppings {
     BUFFALO(0.75, 1.50, 2.25);
 
     private final double personalPrice;
-    private final double mediumPrice;
-    private final double largePrice;
 
+    private final double mediumPrice;
+
+    private final double largePrice;
     PremiumToppings(double personalPrice, double mediumPrice, double largePrice) {
         this.personalPrice = personalPrice;
         this.mediumPrice = mediumPrice;
         this.largePrice = largePrice;
     }
 
+    public double getPersonalPrice() {
+        return personalPrice;
+    }
+    public double getMediumPrice() {
+        return mediumPrice;
+    }
+    public double getLargePrice() {
+        return largePrice;
+    }
+
+    public double getPrice(PizzaSize size){
+        if (size == PizzaSize.PERSONAL){
+            return personalPrice;
+        } else if (size == PizzaSize.MEDIUM) {
+            return mediumPrice;
+        }else {
+            return largePrice;
+        }
+    }
 
 }

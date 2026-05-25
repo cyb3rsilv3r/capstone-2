@@ -50,20 +50,29 @@ sideOrders = new ArrayList<>();
     }
 
     public String orderSummary() {
+        double total = 0;
         String summary = "ORDER SUMMARY\n";
 
         for (Pizza pizza : pizzas) {
-            summary += "\nPizza Overview:\n" + pizza.pizzaSummary() + "\n";
+            summary += "\nPizza Overview:\n" +
+                    pizza.pizzaSummary() + "\n Pizza Subtotal: $" +
+            pizza.getValue();
+            total += pizza.getValue();
         }
 
         for (Drink drink : drinks) {
-            summary += "\nDrink Overview:\n" + drink.drinkSummary() + "\n";
+            summary += "\nDrink Overview:\n" +
+                    drink.drinkSummary() +
+                    "\n Drink Price: $"+
+                    drink.getValue();
+            total += drink.getValue();
         }
 
         for (SideOrder sideOrder : sideOrders) {
             summary += "\nSide Order Overview:\n" + sideOrder.sideOrderSummary() + "\n";
+            total += sideOrder.getPrice();
         }
 
-        return summary;
+        return  summary +"\n Grand Total: $" + total;
     }
 }

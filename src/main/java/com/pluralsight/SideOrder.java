@@ -18,7 +18,11 @@ public String sideOrderSummary(){
 
     String SideOrder = "";
     return "Side Order: " + this +
-            "\n Price: " + price;
+            "\n Price: $" + price;
 }
+
+    public double getPrice() {
+        return price;
     }
+}
 

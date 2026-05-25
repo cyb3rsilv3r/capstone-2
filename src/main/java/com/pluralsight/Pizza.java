@@ -6,16 +6,16 @@ public class Pizza {
 
     PizzaSize size;
     CrustType crust;
-
     ArrayList<Sauces> sauces;
     ArrayList<Sides> sides;
     ArrayList<RegularToppings> regularToppings;
     ArrayList<PremiumToppings> premiumToppings;
-
     boolean extraToppings;
     boolean crustStuffed;
 
+    //variables i had to add on to help my methods run smoother
     String pizzaSummary;
+    double total;
 
     public Pizza(PizzaSize size, CrustType crust, boolean extraToppings, boolean crustStuffed) {
 
@@ -30,6 +30,7 @@ public class Pizza {
         this.premiumToppings = new ArrayList<>();
     }
 
+    //added pricing to sizing
     public PizzaSize getSize() {
         return size;
     }
@@ -76,8 +77,18 @@ public class Pizza {
 
     public void addPremiumTopping(PremiumToppings topping) {
         premiumToppings.add(topping);
+
     }
 
+    public double getValue(){
+        total =0;
+        total += size.getPrice();
+
+        for (PremiumToppings toppings : premiumToppings){
+            total += toppings.getPrice(size);
+        }
+        return total;
+    }
 
     public String pizzaSummary() {
         return "size: " + size +
@@ -85,6 +96,7 @@ public class Pizza {
                 "\n Sauces: " + sauces +
                 "\n Sides: " + sides +
                 "\n Regular Toppings: " + regularToppings +
-                "\n Premium Toppings: " + premiumToppings;
+                "\n Premium Toppings: " + premiumToppings +
+                "\n Total: $" + getValue();
     }
 }
