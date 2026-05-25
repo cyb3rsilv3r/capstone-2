@@ -15,6 +15,8 @@ public class Pizza {
     boolean extraToppings;
     boolean crustStuffed;
 
+    String pizzaSummary;
+
     public Pizza(PizzaSize size, CrustType crust, boolean extraToppings, boolean crustStuffed) {
 
         this.size = size;
@@ -79,8 +81,10 @@ public class Pizza {
 
     public String pizzaSummary() {
         return "size: " + size +
-                "\nCrust: " + crust +
-                "\nRegular Toppings: " + regularToppings +
-                "\nPremium Toppings: " + premiumToppings;
+                "\n Crust: " + crust +
+                "\n Sauces: " + sauces +
+                "\n Sides: " + sides +
+                "\n Regular Toppings: " + regularToppings +
+                "\n Premium Toppings: " + premiumToppings;
     }
 }

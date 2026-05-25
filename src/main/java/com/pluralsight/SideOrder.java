@@ -14,6 +14,11 @@ public enum SideOrder {
     SideOrder(double price) {
         this.price = price;
     }
+public String sideOrderSummary(){
 
+    String SideOrder = "";
+    return "Side Order: " + this +
+            "\n Price: " + price;
+}
     }
 

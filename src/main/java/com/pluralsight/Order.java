@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Order {
     ArrayList<Pizza> pizzas;
-
     ArrayList<Drink> drinks;
     ArrayList<SideOrder> sideOrders;
 
@@ -19,6 +18,10 @@ pizzas = new ArrayList<>();
 drinks = new ArrayList<>();
 sideOrders = new ArrayList<>();
     }
+//// private variables to be able to call other classes
+//    private Pizza pizza;
+//    private Drink drink;
+//    private SideOrder sideOrder;
 
     // getters
     public ArrayList<Pizza> getPizzas() {
@@ -44,5 +47,23 @@ sideOrders = new ArrayList<>();
 
     public void addSideOrder(SideOrder sideOrder) {
         sideOrders.add(sideOrder);
+    }
+
+    public String orderSummary() {
+        String summary = "ORDER SUMMARY\n";
+
+        for (Pizza pizza : pizzas) {
+            summary += "\nPizza Overview:\n" + pizza.pizzaSummary() + "\n";
+        }
+
+        for (Drink drink : drinks) {
+            summary += "\nDrink Overview:\n" + drink.drinkSummary() + "\n";
+        }
+
+        for (SideOrder sideOrder : sideOrders) {
+            summary += "\nSide Order Overview:\n" + sideOrder.sideOrderSummary() + "\n";
+        }
+
+        return summary;
     }
 }

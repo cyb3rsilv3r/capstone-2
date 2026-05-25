@@ -22,6 +22,6 @@ public class Main {
         testOrder.addPizza(testPizza);
         testOrder.addSideOrder(SideOrder.GARLIC_KNOTS);
 
-                System.out.println(testPizza.pizzaSummary());
+                System.out.println(testOrder.orderSummary());
     }// end of psvm
 }//end of main
