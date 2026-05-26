@@ -1,5 +1,9 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Order {
@@ -75,4 +79,14 @@ sideOrders = new ArrayList<>();
 
         return  summary +"\n Grand Total: $" + total;
     }
+    public void saveReceipt() throws IOException {
+        try {
+            BufferedWriter writer = new BufferedWriter(new  FileWriter("receipt.txt"));
+            writer.write(orderSummary());
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("ur file?...idk bro but it did not save..");
+        }
+    }
+
 }

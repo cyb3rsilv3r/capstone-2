@@ -8,20 +8,26 @@ public class Main {
         Pizza testPizza = new Pizza(
                 PizzaSize.MEDIUM,
                 CrustType.CAULIFLOWER,
-                false,
+                true,
                 true
         );
         testPizza.addSide(Sides.PARMESAN);
         testPizza.addRegularTopping(RegularToppings.ONIONS);
         testPizza.addSauce(Sauces.BUFFALO);
         testPizza.addPremiumTopping(PremiumToppings.BACON);
+        testPizza.addExtraTopping(ExtraToppings.EXTRA_CHEESE);
+        testPizza.addExtraTopping(ExtraToppings.EXTRA_MEAT);
+
 
         Drink testDrink = new Drink(DrinkSize.SMALL, DrinkMenu.DR_PEPPER);
+        Drink testDrink2 = new Drink(DrinkSize.MEDIUM, DrinkMenu.FANTA);
 
         testOrder.addDrinks(testDrink);
+        testOrder.addDrinks(testDrink2);
         testOrder.addPizza(testPizza);
         testOrder.addSideOrder(SideOrder.GARLIC_KNOTS);
+        testOrder.addSideOrder(SideOrder.CHEESY_BREAD);
 
-                System.out.println(testOrder.orderSummary());
+        System.out.println(testOrder.orderSummary());
     }// end of psvm
 }//end of main

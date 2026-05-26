@@ -10,7 +10,8 @@ public class Pizza {
     ArrayList<Sides> sides;
     ArrayList<RegularToppings> regularToppings;
     ArrayList<PremiumToppings> premiumToppings;
-    boolean extraToppings;
+    ArrayList<ExtraToppings> extraToppingsList;
+    boolean wantsExtraToppings;
     boolean crustStuffed;
 
     //variables i had to add on to help my methods run smoother
@@ -21,13 +22,14 @@ public class Pizza {
 
         this.size = size;
         this.crust = crust;
-        this.extraToppings = extraToppings;
+        this.wantsExtraToppings = extraToppings;
         this.crustStuffed = crustStuffed;
 
         this.sauces = new ArrayList<>();
         this.sides = new ArrayList<>();
         this.regularToppings = new ArrayList<>();
         this.premiumToppings = new ArrayList<>();
+        this.extraToppingsList = new ArrayList<>();
     }
 
     //added pricing to sizing
@@ -55,8 +57,8 @@ public class Pizza {
         return premiumToppings;
     }
 
-    public boolean isExtraToppings() {
-        return extraToppings;
+    public boolean isWantsExtraToppings() {
+        return wantsExtraToppings;
     }
 
     public boolean isCrustStuffed() {
@@ -80,12 +82,21 @@ public class Pizza {
 
     }
 
-    public double getValue(){
-        total =0;
+    public void addExtraTopping(ExtraToppings extraTopping) {
+        if (isWantsExtraToppings()) {
+            extraToppingsList.add(extraTopping);
+        }
+    }
+
+    public double getValue() {
+        total = 0;
         total += size.getPrice();
 
-        for (PremiumToppings toppings : premiumToppings){
+        for (PremiumToppings toppings : premiumToppings) {
             total += toppings.getPrice(size);
+        }
+        for (ExtraToppings extraToppings : extraToppingsList) {
+            total += extraToppings.getPrice(size);
         }
         return total;
     }
@@ -97,6 +108,8 @@ public class Pizza {
                 "\n Sides: " + sides +
                 "\n Regular Toppings: " + regularToppings +
                 "\n Premium Toppings: " + premiumToppings +
+                "\n Extra Toppings: " + (wantsExtraToppings ? "Yes" : "No") +
+                "\n Stuffed Crust: " + (crustStuffed ? "Yes" : "No") +
                 "\n Total: $" + getValue();
     }
 }
