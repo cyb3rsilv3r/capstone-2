@@ -5,6 +5,16 @@ import java.util.Scanner;
 public class OrderScreen {
     Scanner scanner = new Scanner(System.in);
 
+    //Add pizza to order
+    public void pizzaName(){
+        System.out.print("Name this pizza: ");
+        String pizzaName = scanner.nextLine();
+       // pizza.setPizzaName(pizzaName); <- gonna need that when ui is done
+    }
+
+
+
+
     //PIZZA SIZE
     public void displayPizzaSize() {
         int counter = 1;

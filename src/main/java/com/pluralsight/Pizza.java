@@ -17,6 +17,15 @@ public class Pizza {
     //variables i had to add on to help my methods run smoother
     String pizzaSummary;
     double total;
+    //quick method to name each pizza for ease of output
+private String pizzaName;
+    public String getPizzaName() {
+        return pizzaName;
+    }
+
+    public void setPizzaName(String pizzaName) {
+        this.pizzaName = pizzaName;
+    }
 
     public Pizza(PizzaSize size, CrustType crust, boolean extraToppings, boolean crustStuffed) {
 
@@ -102,7 +111,8 @@ public class Pizza {
     }
 
     public String pizzaSummary() {
-        return "size: " + size +
+        return  "Pizza name: "+ pizzaName +
+                "\nsize: " + size +
                 "\n Crust: " + crust +
                 "\n Sauces: " + sauces +
                 "\n Sides: " + sides +

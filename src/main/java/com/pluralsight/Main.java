@@ -18,6 +18,15 @@ public class Main {
         testPizza.addExtraTopping(ExtraToppings.EXTRA_CHEESE);
         testPizza.addExtraTopping(ExtraToppings.EXTRA_MEAT);
 
+        Pizza testPizza2 = new Pizza(
+                PizzaSize.PERSONAL,
+                CrustType.REGULAR,
+                false,
+                false
+        );
+        testPizza2.addSauce(Sauces.MARINARA);
+        testPizza2.addRegularTopping(RegularToppings.PINEAPPLE);
+        testPizza2.addRegularTopping(RegularToppings.OLIVES);
 
         Drink testDrink = new Drink(DrinkSize.SMALL, DrinkMenu.DR_PEPPER);
         Drink testDrink2 = new Drink(DrinkSize.MEDIUM, DrinkMenu.FANTA);
@@ -27,7 +36,7 @@ public class Main {
         testOrder.addPizza(testPizza);
         testOrder.addSideOrder(SideOrder.GARLIC_KNOTS);
         testOrder.addSideOrder(SideOrder.CHEESY_BREAD);
-
+        testOrder.addPizza(testPizza2);
         System.out.println(testOrder.orderSummary());
     }// end of psvm
 }//end of main
