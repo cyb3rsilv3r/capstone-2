@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class OrderScreen {
@@ -16,16 +17,17 @@ public class OrderScreen {
 
     //PIZZA SIZE
     // make display "helper" methods private
-  private void displayPizzaSize() {
+    private void displayPizzaSize() {
         int counter = 1;
         System.out.println("Pizza Sizes");
         //.values lists all the items in the enum
         for (PizzaSize pizzaSize : PizzaSize.values()) {
-            System.out.println(  counter + ". " + pizzaSize);
+            System.out.println(counter + ". " + pizzaSize);
             counter++;
         }
     }//end of pizza size
-// make the choice int so users can use numbers to pick from te toppings list
+
+    // make the choice int so users can use numbers to pick from te toppings list
     private PizzaSize choosePizzaSize() {
         displayPizzaSize();
         System.out.println(" Select Pizza Size: ");
@@ -40,7 +42,7 @@ public class OrderScreen {
         int counter = 1;
         System.out.println("Our Crispy Crusts");
         for (CrustType crustType : CrustType.values()) {
-            System.out.println( counter + ". " + crustType);  //needs art
+            System.out.println(counter + ". " + crustType);  //needs art
             counter++;
         }
     }// end of crusts
@@ -82,7 +84,7 @@ public class OrderScreen {
         int counter = 1;
         System.out.println("Premium Topping");
         for (PremiumToppings premiumToppings : PremiumToppings.values()) {
-            System.out.println(  counter + ". " + premiumToppings);
+            System.out.println(counter + ". " + premiumToppings);
             counter++;
         }
     }// end of display premium toppings
@@ -106,7 +108,7 @@ public class OrderScreen {
             pizza.addPremiumTopping(topping);
 
             // use counter variable and display it to show how many free premium toppings left
-            System.out.print("Premium toppings left: "+ (1 -premiumCounter));
+            System.out.print("Premium toppings left: " + (1 - premiumCounter));
             String answer = scanner.nextLine();
             premiumCounter++;
         }// my fav code block
@@ -118,7 +120,7 @@ public class OrderScreen {
         int counter = 1;
         System.out.println(" Our scrumptious toppings");
         for (RegularToppings regularToppings : RegularToppings.values()) {
-            System.out.println(  counter + ". " + regularToppings);
+            System.out.println(counter + ". " + regularToppings);
             counter++;
         }
     }
@@ -138,18 +140,29 @@ public class OrderScreen {
     public void addRegularToppingsToPizza(Pizza pizza) {
         boolean adding = true;
         int toppingCounter = 0;
-
-        while (toppingCounter < 9) {
+// make a while loop to account for no. of toppings and skipping them too
+        while (adding && toppingCounter < 9) {
             displayRegularToppings();
             RegularToppings topping = chooseRegToppings(0);
             pizza.addRegularTopping(topping);
 
             // use counter variable and display it to show how many free premium toppings left
-            System.out.print("Topping spots left: "+ (8 -toppingCounter));
+            System.out.print("Topping spots left: " + (8 - toppingCounter));
             String answer = scanner.nextLine();
             toppingCounter++;
-            }
+
+            // add an if statement so they dont have to add all 9 toppings
+if (toppingCounter < 8){
+    System.out.print("Add another regular topping? yes/no: ");
+     answer = scanner.nextLine();
+
+    if (answer.equalsIgnoreCase("no")) {
+        adding = false;
+    }
+}
         }
+
+    }
 
 
     //DRINK MENU
@@ -157,7 +170,7 @@ public class OrderScreen {
         int counter = 1;
         System.out.println("Our Yummy Drinks!");
         for (DrinkMenu drinks : DrinkMenu.values()) {
-            System.out.println( counter + ". " + drinks);
+            System.out.println(counter + ". " + drinks);
             counter++;
         }
     }// end of display drinks
@@ -167,7 +180,7 @@ public class OrderScreen {
         int choice;
         System.out.println("Select Drink");
         choice = Integer.parseInt(scanner.nextLine());
-      //  scanner.nextLine();
+        //  scanner.nextLine();
         DrinkMenu[] drinkMenus = DrinkMenu.values();
         return drinkMenus[choice - 1];
     }//end of choose drink
@@ -193,7 +206,7 @@ public class OrderScreen {
         int counter = 1;
         System.out.println("Our Side Orders");
         for (SideOrder sideOrder : SideOrder.values()) {
-            System.out.println( counter + ". " + sideOrder);// needs art here
+            System.out.println(counter + ". " + sideOrder);// needs art here
             counter++;
         }
     }
@@ -206,34 +219,42 @@ public class OrderScreen {
         return sideOrders[choice - 1];
     }
 
-    public void checkout(Order order) {
+    public void checkout(Order order) throws IOException {
+
+        System.out.println("{Checkout!}");
+        //checkout flow
+
+        //  validate order
         if (!order.isValidOrder()) {
             System.out.println("If you're not getting pizza, you gotta get a drink or garlic knots.");
             return;
+        } else {
+            // show order summary
+            System.out.println(order.orderSummary());
         }
-// add write reciept here
-        System.out.println(order.orderSummary());
+        // confirm order
         System.out.println("Confirm order?");
+        // make a quick boolean to accept answer
+boolean orderCorrect = false;
+        // if statement to write receipt or start alllll over
+if (orderCorrect = true){
+    ReceiptFileManager receiptFileManager = new ReceiptFileManager();
+    receiptFileManager.saveReceipt(order);
+} else {
+    return;
+}
 
-        // if yes: save receipt
-        // if no: go back / cancel
-         // close loop here!
+
+
+
     }
 
-
-
-
-
-
-
-
-
     // PIZZA MAKING UI STUFF
-    public void orderMenu() {
-//        int choice = 0;
+    public void orderMenu() throws IOException {
+        int choice = 0;
         // make a boolean to make the order menu loop
         boolean ordering = true;
-Order order = new Order();
+        Order order = new Order();
         while (ordering) {
             System.out.println("1. Add Pizza");
             System.out.println("2. Add Drink");
@@ -261,24 +282,22 @@ Order order = new Order();
 // stuffed crust
 //?? do i need one for stuffed crust? tbd
 //sauce
-                    displaySauces();
                     Sauces sauce = chooseSauce();
                     pizza.addSauce(sauce);
-
 //premium toppings
                     addPremiumToppingsToPizza(pizza);
 //regular toppings
                     addRegularToppingsToPizza(pizza);
 // add finished pizza to order!!! yayy finally!!
-order.addPizza(pizza);
+                    order.addPizza(pizza);
                     break;
                 case 2://ADD DRINK
                     DrinkMenu drink = chooseDrink();
                     DrinkSize drinkSize = chooseDrinkSize();
                     // make new drink object ao add to order
-                    Drink newDrink = new Drink(drinkSize ,drink );
+                    Drink newDrink = new Drink(drinkSize, drink);
                     // need to add drink to order
-order.addDrinks(newDrink);
+                    order.addDrinks(newDrink);
 
                     //needs loop to add multiple drinks
                     break;
@@ -290,7 +309,7 @@ order.addDrinks(newDrink);
                     //     needs loop to add multiple sides too
                     break;
                 case 4: // checkout
-                    checkout(new Order());    //here is where order summary goes
+                    checkout(order);    //here is where order summary goes
                     // if order is good at confirmation then save the order else run a loop to start over or exit entirely
                     ordering = false;
                     break;
@@ -298,7 +317,7 @@ order.addDrinks(newDrink);
                     // dont do that actually just stop the loop and maybe ask to restart?
                     ordering = false;
                     break;
-                    //todo add default case for invalid input
+                //todo add default case for invalid input
 //make sure to do a confirmation of the cancellation
 
 
@@ -307,3 +326,7 @@ order.addDrinks(newDrink);
         }
     }//end of class
 }
+
+
+
+
