@@ -17,12 +17,14 @@ public class OrderScreen {
     //PIZZA SIZE
     public void displayPizzaSize() {
         int counter = 1;
+        System.out.println("Pizza Sizes");
+        //.values lists all the items in the enum
         for (PizzaSize pizzaSize : PizzaSize.values()) {
-            System.out.println(counter + ". " + pizzaSize);
+            System.out.println(  counter + ". " + pizzaSize);
             counter++;
         }
     }//end of pizza size
-
+// make the choice int so users can use numbers to pick from te toppings list
     public PizzaSize choosePizzaSize(int choice) {
         System.out.println(" Select Pizza Size: ");
         choice = scanner.nextInt();
@@ -35,7 +37,7 @@ public class OrderScreen {
     public void displayPizzaCrusts() {
         int counter = 1;
         for (CrustType crustType : CrustType.values()) {
-            System.out.println(counter + ". " + crustType);
+            System.out.println( "Pizza Crusts" + "\n" + counter + ". " + crustType);  //needs art
             counter++;
         }
     }// end of crusts
@@ -50,6 +52,7 @@ public class OrderScreen {
 
     //SAUCES
     public void displaySauces() {
+        System.out.println("Our Sauces");
         int counter = 1;
         for (Sauces sauce : Sauces.values()) {
             System.out.println(counter + ". " + sauce);
@@ -70,8 +73,9 @@ public class OrderScreen {
     //PREMIUM TOPPINGS
     public void displayPremiumToppings() {
         int counter = 1;
+        System.out.println("Premium Topping");
         for (PremiumToppings premiumToppings : PremiumToppings.values()) {
-            System.out.println(counter + ". " + premiumToppings);
+            System.out.println(  counter + ". " + premiumToppings);
             counter++;
         }
     }// end of display premium toppings
@@ -94,10 +98,11 @@ public class OrderScreen {
             PremiumToppings topping = choosePremTopps(0);
             pizza.addPremiumTopping(topping);
 
-            System.out.print("Add one more premium topping? for free yes/no: ");
+            // use counter variable and display it to show how many free premium toppings left
+            System.out.print("Premium toppings left: "+ (1 -premiumCounter));
             String answer = scanner.nextLine();
             premiumCounter++;
-        }
+        }// my fav code block
     }
 
 
@@ -105,7 +110,7 @@ public class OrderScreen {
     public void displayRegularToppings() {
         int counter = 1;
         for (RegularToppings regularToppings : RegularToppings.values()) {
-            System.out.println(counter + ". " + regularToppings);
+            System.out.println( "Regular Toppings" + "\n "+ counter + ". " + regularToppings);
             counter++;
         }
     }
@@ -120,26 +125,27 @@ public class OrderScreen {
 
     public void addRegularToppingsToPizza(Pizza pizza) {
         boolean adding = true;
+        int toppingCounter = 0;
 
-        while (adding) {
+        while (toppingCounter < 4) {
             displayRegularToppings();
             RegularToppings topping = chooseRegToppings(0);
             pizza.addRegularTopping(topping);
 
-            System.out.print("Add another regular topping? yes/no: ");
+            // use counter variable and display it to show how many free premium toppings left
+            System.out.print("Premium toppings left: "+ (1 -toppingCounter));
             String answer = scanner.nextLine();
-
-            if (answer.equalsIgnoreCase("no")) {
-                adding = false;
+            toppingCounter++;
             }
         }
-    }
+
 
     //DRINK MENU
     public void displayDrinkMenu() {
         int counter = 1;
+        System.out.println("Our Yummy Drinks!");
         for (DrinkMenu drinks : DrinkMenu.values()) {
-            System.out.println(counter + ". " + drinks);
+            System.out.println( counter + ". " + drinks);
             counter++;
         }
     }// end of display drinks
@@ -153,6 +159,7 @@ public class OrderScreen {
     }//end of choose drink
 
     public void displayDrinkSize() {
+        System.out.println("how much are you sipping?");
         int counter = 1;
         for (DrinkSize drinkSize : DrinkSize.values()) {
             System.out.println(counter + ". " + drinkSize);
@@ -170,7 +177,7 @@ public class OrderScreen {
     public void displaySideOrderMenu() {
         int counter = 1;
         for (SideOrder sideOrder : SideOrder.values()) {
-            System.out.println(counter + ". " + sideOrder);
+            System.out.println("Side Orders" + "\n "+ counter + ". " + sideOrder);// needs art here
             counter++;
         }
     }
