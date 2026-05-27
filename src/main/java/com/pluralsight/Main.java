@@ -1,42 +1,50 @@
 package com.pluralsight;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        Order testOrder = new Order();
-        Pizza testPizza = new Pizza(
-                PizzaSize.MEDIUM,
-                CrustType.CAULIFLOWER,
-                true,
-                true
-        );
-        testPizza.addSide(Sides.PARMESAN);
-        testPizza.addRegularTopping(RegularToppings.ONIONS);
-        testPizza.addSauce(Sauces.BUFFALO);
-        testPizza.addPremiumTopping(PremiumToppings.BACON);
-        testPizza.addExtraTopping(ExtraToppings.EXTRA_CHEESE);
-        testPizza.addExtraTopping(ExtraToppings.EXTRA_MEAT);
+    public static void main(String[] args) throws IOException {
+        displayHomeScreen();
+    }
 
-        Pizza testPizza2 = new Pizza(
-                PizzaSize.PERSONAL,
-                CrustType.REGULAR,
-                false,
-                false
-        );
-        testPizza2.addSauce(Sauces.MARINARA);
-        testPizza2.addRegularTopping(RegularToppings.PINEAPPLE);
-        testPizza2.addRegularTopping(RegularToppings.OLIVES);
 
-        Drink testDrink = new Drink(DrinkSize.SMALL, DrinkMenu.DR_PEPPER);
-        Drink testDrink2 = new Drink(DrinkSize.MEDIUM, DrinkMenu.FANTA);
+    //• Home Screen
+    public static void displayHomeScreen() throws IOException {
+// Add Scanner
+        Scanner scanner = new Scanner(System.in);
 
-        testOrder.addDrinks(testDrink);
-        testOrder.addDrinks(testDrink2);
-        testOrder.addPizza(testPizza);
-        testOrder.addSideOrder(SideOrder.GARLIC_KNOTS);
-        testOrder.addSideOrder(SideOrder.CHEESY_BREAD);
-        testOrder.addPizza(testPizza2);
-        System.out.println(testOrder.orderSummary());
+        boolean running = true; // controls if app keeps running
+
+//     The application should continue to run until the user chooses to exit.
+//need a loop here
+        while (running) {
+
+            System.out.println(" Welcome to Silvers Pizzeria");
+            System.out.println("Pizza Sign goes here");
+
+            System.out.println("Please select ur option: ");
+            System.out.println("1. new order");
+            System.out.println("2. exit");
+
+//get user input here
+            int choice = scanner.nextInt();
+            // make a case switch for the first menu
+            switch (choice){
+                case 1:
+
+                    break;
+                case 2:
+
+break;
+
+
+
+
+            }
+
+        }
     }// end of psvm
 }//end of main
