@@ -12,7 +12,6 @@ public enum DrinkMenu {
     private final double largePrice;
 
     DrinkMenu(double smallPrice, double mediumPrice, double largePrice) {
-
         this.smallPrice = smallPrice;
         this.mediumPrice = mediumPrice;
         this.largePrice = largePrice;
