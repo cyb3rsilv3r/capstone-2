@@ -153,10 +153,10 @@ public class OrderScreen {
 
             // add an if statement so they dont have to add all 9 toppings
 if (toppingCounter < 8){
-    System.out.print("Add another regular topping? yes/no: ");
+    System.out.print("Add another regular topping? y/n: ");
      answer = scanner.nextLine();
-
-    if (answer.equalsIgnoreCase("no")) {
+//dont have to add value for why since  it alr assumes true
+    if (answer.equalsIgnoreCase("n")) {
         adding = false;
     }
 }
@@ -236,8 +236,9 @@ if (toppingCounter < 8){
         System.out.println("Confirm order?");
         // make a quick boolean to accept answer
 boolean orderCorrect = false;
+orderCorrect = Boolean.parseBoolean(scanner.nextLine());
         // if statement to write receipt or start alllll over
-if (orderCorrect = true){
+if (orderCorrect){
     ReceiptFileManager receiptFileManager = new ReceiptFileManager();
     receiptFileManager.saveReceipt(order);
 } else {
