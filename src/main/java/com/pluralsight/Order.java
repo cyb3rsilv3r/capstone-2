@@ -1,9 +1,5 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Order {
@@ -11,7 +7,7 @@ public class Order {
     ArrayList<Drink> drinks;
     ArrayList<SideOrder> sideOrders;
 
-    public Order(ArrayList<Pizza> pizzas, ArrayList<Drink> drinks, ArrayList<SideOrder> sideOrders) {
+   public Order (ArrayList<Pizza> pizzas, ArrayList<Drink> drinks, ArrayList<SideOrder> sideOrders) {
         this.pizzas = new ArrayList<>();
         this.drinks = new ArrayList<>();
         this.sideOrders = new ArrayList<>();
@@ -28,20 +24,20 @@ sideOrders = new ArrayList<>();
 //    private SideOrder sideOrder;
 
     // getters
-    public ArrayList<Pizza> getPizzas() {
+    private ArrayList<Pizza> getPizzas() {
         return pizzas;
     }
 
-    public ArrayList<Drink> getDrinks() {
+    private ArrayList <Drink> getDrinks() {
         return drinks;
     }
 
-    public ArrayList<SideOrder> getSideOrders() {
+    private ArrayList<SideOrder> getSideOrders() {
         return sideOrders;
     }
 
     //methods
-    public void addPizza(Pizza pizza) {
+   public void addPizza(Pizza pizza) {
         pizzas.add(pizza);
     }
 
@@ -78,15 +74,6 @@ sideOrders = new ArrayList<>();
         }
 
         return  summary +"\n Grand Total: $" + total;
-    }
-    public void saveReceipt() throws IOException {
-        try {
-            BufferedWriter writer = new BufferedWriter(new  FileWriter("receipt.txt"));
-            writer.write(orderSummary());
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("ur file?...idk bro but it did not save..");
-        }
     }
 
     public boolean isValidOrder() {
