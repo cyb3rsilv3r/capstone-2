@@ -9,7 +9,6 @@ public class OrderScreen {
     //Add pizza to order
     public String pizzaName() {
         System.out.print("Name this pizza: ");
-        String pizzaName = scanner.nextLine();
         return scanner.nextLine();
         // pizza.setPizzaName(pizzaName); <- gonna need that when ui is done
     }
@@ -58,6 +57,15 @@ public class OrderScreen {
         }
     }
 
+    public Sauces chooseSauce(int choice) {
+        System.out.println(" Choose your sauce: ");
+        choice = scanner.nextInt();
+        scanner.nextLine();
+        Sauces[] sauceType = Sauces.values();
+        return sauceType[choice - 1];
+    }
+
+// TOPPINGS STUFF
 
     //PREMIUM TOPPINGS
     public void displayPremiumToppings() {
@@ -74,6 +82,22 @@ public class OrderScreen {
         scanner.nextLine();
         PremiumToppings[] premiumToppings = PremiumToppings.values();
         return premiumToppings[choice - 1];
+    }
+
+    public void addPremiumToppingsToPizza(Pizza pizza) {
+        boolean adding = true;
+
+        int premiumCounter = 0;
+
+        while (premiumCounter < 2) {
+            displayPremiumToppings();
+            PremiumToppings topping = choosePremTopps(0);
+            pizza.addPremiumTopping(topping);
+
+            System.out.print("Add one more premium topping? for free yes/no: ");
+            String answer = scanner.nextLine();
+            premiumCounter++;
+        }
     }
 
 
@@ -93,6 +117,23 @@ public class OrderScreen {
         RegularToppings[] regularToppings = RegularToppings.values();
         return regularToppings[choice - 1];
     }// end of choose regular toppings
+
+    public void addRegularToppingsToPizza(Pizza pizza) {
+        boolean adding = true;
+
+        while (adding) {
+            displayRegularToppings();
+            RegularToppings topping = chooseRegToppings(0);
+            pizza.addRegularTopping(topping);
+
+            System.out.print("Add another regular topping? yes/no: ");
+            String answer = scanner.nextLine();
+
+            if (answer.equalsIgnoreCase("no")) {
+                adding = false;
+            }
+        }
+    }
 
     //DRINK MENU
     public void displayDrinkMenu() {
@@ -168,48 +209,57 @@ public class OrderScreen {
 
             choice = scanner.nextInt();
             scanner.nextLine();
-        switch (choice) {
-            case 1: // add pizza
-                // name
-                pizzaName();
-                String pizzaName = pizzaName();
+            switch (choice) {
+                case 1: // add pizza
+                    //first collect choices to fill pizza constructor
 // size
-                displayPizzaSize();
-                PizzaSize size = choosePizzaSize(0);
+                    displayPizzaSize();
+                    PizzaSize size = choosePizzaSize(0);
 //crust
-                displayPizzaCrusts();
-                CrustType crust = chooseCrustType(0);
+                    displayPizzaCrusts();
+                    CrustType crust = chooseCrustType(0);
+
+                    //create new pizza to add remaining variables
+                    Pizza pizza = new Pizza(size, crust, false, false);
+                    // name
+                    pizzaName();
+                    String pizzaName = pizzaName();
+                    pizza.setPizzaName(pizzaName);
 
 // stuffed crust
-
+//?? do i need one for stuffed crust? tbd
 //sauce
+                    displaySauces();
+                    Sauces sauce = chooseSauce(0);
+                    pizza.addSauce(sauce);
 
 //premium toppings
-                displayPremiumToppings();
-                PremiumToppings premiumToppings = choosePremTopps(0);
+                    addPremiumToppingsToPizza(pizza);
 //regular toppings
-                displayRegularToppings();
-                RegularToppings regularToppings = chooseRegToppings(0);
+                    addRegularToppingsToPizza(pizza);
+// add finished pizza to order!!! yayy finally!!
 
-                break;
-            case 2://ADD DRINK
-                displayDrinkMenu();
-                DrinkMenu drink = chooseDrink(0);
-                DrinkSize drinkSize = chooseDrinkSize(0);
-                break;
-            case 3: //Add Side Orders
-                displaySideOrderMenu();
-                SideOrder sideOrder = chooseSideOrders(0);
-                break;
-            case 4: // checkout
-            checkout();    //here is where order summary goes
-                break;
-            case 5: // cancel order ( use .remove to extract from order object
+                    break;
+                case 2://ADD DRINK
+                    displayDrinkMenu();
+                    DrinkMenu drink = chooseDrink(0);
+                    DrinkSize drinkSize = chooseDrinkSize(0);
+                    //needs loop to add multiple drinks
+                    break;
+                case 3: //Add Side Orders
+                    displaySideOrderMenu();
+                    SideOrder sideOrder = chooseSideOrders(0);
+                    //     needs loop to add multiple sides too
+                    break;
+                case 4: // checkout
+                    checkout(new Order());    //here is where order summary goes
+                    break;
+                case 5: // cancel order ( use .remove to extract from order object
 //make sure to do a confirmation of the cancellation
 
 
-        }
+            }
 
-    }
-}//end of class
+        }
+    }//end of class
 }

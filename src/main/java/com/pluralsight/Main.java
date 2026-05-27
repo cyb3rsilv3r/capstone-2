@@ -29,18 +29,21 @@ public class Main {
             System.out.println("1. new order");
             System.out.println("2. exit");
 
+
 //get user input here
             int choice = scanner.nextInt();
             // make a case switch for the first menu
-            switch (choice){
+            switch (choice) {
                 case 1:
-
+                    // create an orderScreen object so i can use my order screen method within a static class
+                    OrderScreen orderScreen = new OrderScreen();
+                    orderScreen.orderMenu();
                     break;
                 case 2:
-
-break;
-
-
+running = false;
+                    break;
+                default:
+                    System.out.println("That wasn't an option please dont click that again ");
 
 
             }
