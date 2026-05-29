@@ -11,7 +11,7 @@ public class ReceiptFileManager {
 
     public void saveReceipt(Order order) throws IOException {
         //make a folder for the receipts
-        File folder = new File("reciepts.txt");
+        File folder = new File("receipts");
         folder.mkdirs();
 
         // add a date time formatter then make time stamp file name
@@ -22,12 +22,13 @@ public class ReceiptFileManager {
         File receiptFile = new File(folder, fileName);
         try {
             //write the summary into the file
-            BufferedWriter writer = new BufferedWriter(new FileWriter("receipt.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(receiptFile));
             writer.write(order.orderSummary());
-            writer.close();
+
             System.out.println("Ur receipt was saved !");
+            System.out.println(" order no: "+ receiptFile.getPath());
         } catch (IOException e) {
-            System.out.println("ur file?...idk bro but it did not save..");
+            System.out.println("ur file?...idk but it did not save..");
         }
     }
 

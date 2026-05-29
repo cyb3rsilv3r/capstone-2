@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class OrderScreen {
-   // add my scanner
+    // add my scanner
     Scanner scanner = new Scanner(System.in);
 
     //Method to avoid user input errors.
@@ -176,7 +176,7 @@ public class OrderScreen {
 
             // add an if statement so they do nt have to add all 9 toppings
             if (toppingCounter < 8) {
-                System.out.print("Add another regular topping? y/n: ");
+                System.out.print("\nAdd another regular topping? y/n: ");
                 answer = scanner.nextLine();
 //dont have to add value for why since  it alr assumes true
                 if (answer.equalsIgnoreCase("n")) {
@@ -202,7 +202,7 @@ public class OrderScreen {
         displayDrinkMenu();
         int choice;
         System.out.println("Select Drink");
-        choice = userErrorFixer(DrinkMenu.values().length) ;
+        choice = userErrorFixer(DrinkMenu.values().length);
         //  scanner.nextLine();
         DrinkMenu[] drinkMenus = DrinkMenu.values();
         return drinkMenus[choice - 1];
@@ -238,7 +238,7 @@ public class OrderScreen {
         int choice;
         displaySideOrderMenu();
         SideOrder[] sideOrders = SideOrder.values();
-        choice =userErrorFixer(SideOrder.values().length);
+        choice = userErrorFixer(SideOrder.values().length);
         return sideOrders[choice - 1];
     }
 
@@ -256,17 +256,16 @@ public class OrderScreen {
             System.out.println(order.orderSummary());
         }
         // confirm order
-        System.out.println("Confirm order?");
+        System.out.println("Confirm order? y/n");
+        String answer = scanner.nextLine().trim();
         // make a quick boolean to accept answer
-        boolean orderCorrect;
-        orderCorrect = Boolean.parseBoolean(scanner.nextLine());
+        boolean orderCorrect = answer.equalsIgnoreCase("y");
+
         // if statement to write receipt or start alllll over
         if (orderCorrect) {
             ReceiptFileManager receiptFileManager = new ReceiptFileManager();
             receiptFileManager.saveReceipt(order);
         }
-
-
     }
 
     // PIZZA MAKING UI STUFF
@@ -287,9 +286,9 @@ public class OrderScreen {
             switch (choice) {
                 case 1: // add pizza
                     //first collect choices to fill pizza constructor
-            // size
+                    // size
                     PizzaSize size = choosePizzaSize();
-            //crust
+                    //crust
                     displayPizzaCrusts();
                     CrustType crust = chooseCrustType();
 
