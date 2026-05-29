@@ -22,8 +22,12 @@ public class Main {
 //need a loop here
         while (running) {
 
-            System.out.println(" Welcome to Silvers Pizzeria");
-            System.out.println("Pizza Sign goes here");
+            System.out.println(
+                     "☆ ᕱ⑅ᕱ\n" +
+                    "ପ(„• ༝ •„)ଓ\n" +
+                    "┏━∪∪━━━━━━━━━━━━\n" +
+                    "   ");
+            System.out.println(" Welcome to Silvers Definitely Legal Roadside Pizzeria");
 
             System.out.println("Please select ur option: ");
             System.out.println("1. new order");

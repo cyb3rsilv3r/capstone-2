@@ -1,17 +1,17 @@
 package com.pluralsight;
 
-    public enum RegularToppings {
-        ONIONS,
-        MUSHROOMS,
-        BELL_PEPPERS,
-        OLIVES,
-        TOMATOES,
-        SPINACH,
-        BASIL,
-        PINEAPPLE,
-        ANCHOVIES,
+public enum RegularToppings {
+   CARBURETOR_CARAMELIZED_ONIONS,
+    SUSPICIOUS_BUT_YUMMY_MUSHROOMS,
+    BELL_PEPPERS,
+    OLIVES,
+    SUN_BRUISED_TOMATOES,
+    SPINACH_LOOKING_GREENS,
+    WILD_ROADSIDE_BASIL,
+    PINEAPPLE_FLAVOURED_CHUNKS,
+    CREEKSIDE_ANCHOVIES,
 
-    }
+}
 
 
 

@@ -1,11 +1,11 @@
 package com.pluralsight;
 
 public enum DrinkMenu {
-    COKE(2.00, 2.50, 3.00),
-    SPRITE(2.00, 2.50, 3.00),
-    FANTA(2.00, 2.50, 3.00),
-    DR_PEPPER(2.00, 2.50, 3.00),
-    LEMONADE(2.00, 2.50, 3.00);
+    RADIATOR_COLA(2.00, 2.50, 3.00),
+    DELUXE_HOSE_WATER(2.00, 2.50, 3.00),
+    CITRUS_ANTIFREEZE(2.00, 2.50, 3.00),
+    MOUNTAIN_DONT(2.00, 2.50, 3.00),
+    MYSTERY_LEMONADE(2.00, 2.50, 3.00);
 
     private final double smallPrice;
     private final double mediumPrice;
@@ -28,6 +28,7 @@ public enum DrinkMenu {
     public double getLargePrice() {
         return largePrice;
     }
+
     public double getPrice(DrinkSize size) {
         if (size == DrinkSize.SMALL) {
             return smallPrice;

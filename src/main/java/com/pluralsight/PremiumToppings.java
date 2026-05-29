@@ -1,19 +1,19 @@
 package com.pluralsight;
 
 public enum PremiumToppings {
-    PEPPERONI(1.00, 2.00, 3.00),
-    SAUSAGE(1.00, 2.00, 3.00),
-    HAM(1.00, 2.00, 3.00),
-    BACON(1.00, 2.00, 3.00),
-    CHICKEN(1.00, 2.00, 3.00),
-    MEATBALL(1.00, 2.00, 3.00),
+    ROADSIDE_VENISON(1.00, 2.00, 3.00),
+    GROUNDHOG_SAUSAGE(1.00, 2.00, 3.00),
+    BOAR_HAM(1.00, 2.00, 3.00),
+   MYSTERY_BACON(1.00, 2.00, 3.00),
+    STREET_CHICKEN(1.00, 2.00, 3.00),
+    LUCKY_MEATBALL(1.00, 2.00, 3.00),
 
     //CHEESES
-    MOZZARELLA(0.75, 1.50, 2.25),
-    PARMESAN(0.75, 1.50, 2.25),
-    RICOTTA(0.75, 1.50, 2.25),
-    GOAT_CHEESE(0.75, 1.50, 2.25),
-    BUFFALO(0.75, 1.50, 2.25);
+   AGED_OPOSSUM_MOZZARELLA(0.75, 1.50, 2.25),
+    BASICALLY_PARMESAN(0.75, 1.50, 2.25),
+    RICOTTA_ADJACENT(0.75, 1.50, 2.25),
+    SEMI_HOMEMADE_GOAT_CHEESE(0.75, 1.50, 2.25),
+    WE_THINK_ITS_BUFFALO(0.75, 1.50, 2.25);
 
     private final double personalPrice;
 

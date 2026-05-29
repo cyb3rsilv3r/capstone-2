@@ -249,7 +249,7 @@ public class OrderScreen {
 
         //  validate order
         if (!order.isValidOrder()) {
-            System.out.println("If you're not getting pizza, you gotta get a drink or garlic knots.");
+            System.out.println("If you're not getting pizza, you gotta get a drink or garlic knots. ☠︎︎");
             return;
         } else {
             // show order summary

@@ -15,10 +15,10 @@ public class SignaturePizza extends Pizza {
             addSauce(Sauces.MARINARA);
             addSauce(Sauces.OLIVE_OIL);
 
-            addPremiumTopping(PremiumToppings.MOZZARELLA);
+            addPremiumTopping(PremiumToppings.MYSTERY_BACON);
 
-            addRegularTopping(RegularToppings.TOMATOES);
-            addRegularTopping(RegularToppings.BASIL);
+            addRegularTopping(RegularToppings.SUN_BRUISED_TOMATOES);
+            addRegularTopping(RegularToppings.WILD_ROADSIDE_BASIL);
         }
 
     }
