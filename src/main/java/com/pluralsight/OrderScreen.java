@@ -4,8 +4,34 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class OrderScreen {
-    int choice;
+   // add my scanner
     Scanner scanner = new Scanner(System.in);
+
+    //Method to avoid user input errors.
+    private int userErrorFixer(int maxChoice) {
+
+        while (true) {
+// use try catch to display my error message
+            try {
+// account for what kind of input errors im handling
+                String input = scanner.nextLine().trim();// handles spacing
+
+                int choice = Integer.parseInt(input);// turning the string to an int so i can still use my enums
+// make an if statement to cover out of range input
+                if (choice < 1 || choice > maxChoice) {
+// use the enums value list to determine the range of allowed input w/ maxChoice
+                    System.out.println("Please choose a valid option.");
+
+                } else {
+
+                    return choice;
+                }
+            } catch (NumberFormatException e) {
+
+                System.out.println(" that is not an option we have for you");
+            }
+        }
+    }// end of error stopper
 
     //Add pizza to order
     public String pizzaName() {
@@ -29,10 +55,10 @@ public class OrderScreen {
 
     // make the choice int so users can use numbers to pick from te toppings list
     private PizzaSize choosePizzaSize() {
+
         displayPizzaSize();
         System.out.println(" Select Pizza Size: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = userErrorFixer(PizzaSize.values().length);
         PizzaSize[] sizes = PizzaSize.values();
         return sizes[choice - 1]; //do the -1 so index starts at zero
     }
@@ -50,8 +76,7 @@ public class OrderScreen {
     public CrustType chooseCrustType() {
         int choice;
         System.out.println("Choose your crust: ");
-        choice = scanner.nextInt();
-        scanner.nextLine();
+        choice = userErrorFixer(CrustType.values().length);
         CrustType[] crustTypes = CrustType.values();
         return crustTypes[choice - 1];
     }// end of crust types
@@ -70,8 +95,7 @@ public class OrderScreen {
         displaySauces();
         int choice;
         System.out.println(" Choose your sauce: ");
-        choice = scanner.nextInt();
-        scanner.nextLine();
+        choice = userErrorFixer(Sauces.values().length);
         Sauces[] sauceType = Sauces.values();
         return sauceType[choice - 1];
 
@@ -89,22 +113,21 @@ public class OrderScreen {
         }
     }// end of display premium toppings
 
-    public PremiumToppings choosePremTopps(int choice) {
+    public PremiumToppings choosePremTops() {
+        int choice;
         System.out.println("Select Premium Toppings: ");
-        choice = scanner.nextInt();
-        scanner.nextLine();
+        choice = userErrorFixer(PremiumToppings.values().length);
         PremiumToppings[] premiumToppings = PremiumToppings.values();
         return premiumToppings[choice - 1];
     }
 
     public void addPremiumToppingsToPizza(Pizza pizza) {
-        boolean adding = true;
-
+// this counter shows how many topping u can still put on
         int premiumCounter = 0;
 
         while (premiumCounter < 2) {
             displayPremiumToppings();
-            PremiumToppings topping = choosePremTopps(0);
+            PremiumToppings topping = choosePremTops();
             pizza.addPremiumTopping(topping);
 
             // use counter variable and display it to show how many free premium toppings left
@@ -125,11 +148,11 @@ public class OrderScreen {
         }
     }
 
-    public RegularToppings chooseRegToppings(int choice) {
+    public RegularToppings chooseRegToppings() {
+        int choice;
         System.out.println("Select Regular Toppings: ");
-        choice = scanner.nextInt();
+        choice = userErrorFixer(RegularToppings.values().length);
         try {
-            scanner.nextLine();
             RegularToppings[] regularToppings = RegularToppings.values();
             return regularToppings[choice - 1];
         } catch (Exception e) {
@@ -143,23 +166,23 @@ public class OrderScreen {
 // make a while loop to account for no. of toppings and skipping them too
         while (adding && toppingCounter < 9) {
             displayRegularToppings();
-            RegularToppings topping = chooseRegToppings(0);
+            RegularToppings topping = chooseRegToppings();
             pizza.addRegularTopping(topping);
 
             // use counter variable and display it to show how many free premium toppings left
             System.out.print("Topping spots left: " + (8 - toppingCounter));
-            String answer = scanner.nextLine();
+            String answer;
             toppingCounter++;
 
-            // add an if statement so they dont have to add all 9 toppings
-if (toppingCounter < 8){
-    System.out.print("Add another regular topping? y/n: ");
-     answer = scanner.nextLine();
+            // add an if statement so they do nt have to add all 9 toppings
+            if (toppingCounter < 8) {
+                System.out.print("Add another regular topping? y/n: ");
+                answer = scanner.nextLine();
 //dont have to add value for why since  it alr assumes true
-    if (answer.equalsIgnoreCase("n")) {
-        adding = false;
-    }
-}
+                if (answer.equalsIgnoreCase("n")) {
+                    adding = false;
+                }
+            }
         }
 
     }
@@ -179,14 +202,14 @@ if (toppingCounter < 8){
         displayDrinkMenu();
         int choice;
         System.out.println("Select Drink");
-        choice = Integer.parseInt(scanner.nextLine());
+        choice = userErrorFixer(DrinkMenu.values().length) ;
         //  scanner.nextLine();
         DrinkMenu[] drinkMenus = DrinkMenu.values();
         return drinkMenus[choice - 1];
     }//end of choose drink
 
     private void displayDrinkSize() {
-        System.out.println("how much are you sipping?");
+        System.out.println("how much are you wanting to sip?");
         int counter = 1;
         for (DrinkSize drinkSize : DrinkSize.values()) {
             System.out.println(counter + ". " + drinkSize);
@@ -196,7 +219,7 @@ if (toppingCounter < 8){
 
     public DrinkSize chooseDrinkSize() {
         displayDrinkSize();
-        int choice = Integer.parseInt(scanner.nextLine());
+        int choice = userErrorFixer(DrinkSize.values().length);
         DrinkSize[] drinkSizes = DrinkSize.values();
         return drinkSizes[choice - 1];
     }//end of choose drink size
@@ -215,7 +238,7 @@ if (toppingCounter < 8){
         int choice;
         displaySideOrderMenu();
         SideOrder[] sideOrders = SideOrder.values();
-        choice = Integer.parseInt(scanner.nextLine());
+        choice =userErrorFixer(SideOrder.values().length);
         return sideOrders[choice - 1];
     }
 
@@ -235,24 +258,20 @@ if (toppingCounter < 8){
         // confirm order
         System.out.println("Confirm order?");
         // make a quick boolean to accept answer
-boolean orderCorrect = false;
-orderCorrect = Boolean.parseBoolean(scanner.nextLine());
+        boolean orderCorrect;
+        orderCorrect = Boolean.parseBoolean(scanner.nextLine());
         // if statement to write receipt or start alllll over
-if (orderCorrect){
-    ReceiptFileManager receiptFileManager = new ReceiptFileManager();
-    receiptFileManager.saveReceipt(order);
-} else {
-    return;
-}
-
-
+        if (orderCorrect) {
+            ReceiptFileManager receiptFileManager = new ReceiptFileManager();
+            receiptFileManager.saveReceipt(order);
+        }
 
 
     }
 
     // PIZZA MAKING UI STUFF
     public void orderMenu() throws IOException {
-        int choice = 0;
+        int choice;
         // make a boolean to make the order menu loop
         boolean ordering = true;
         Order order = new Order();
@@ -268,9 +287,9 @@ if (orderCorrect){
             switch (choice) {
                 case 1: // add pizza
                     //first collect choices to fill pizza constructor
-// size
+            // size
                     PizzaSize size = choosePizzaSize();
-//crust
+            //crust
                     displayPizzaCrusts();
                     CrustType crust = chooseCrustType();
 
@@ -281,7 +300,7 @@ if (orderCorrect){
                     pizza.setPizzaName(pizzaName);
 
 // stuffed crust
-//?? do i need one for stuffed crust? tbd
+//?? do I need one for stuffed crust? tbd
 //sauce
                     Sauces sauce = chooseSauce();
                     pizza.addSauce(sauce);
@@ -315,7 +334,7 @@ if (orderCorrect){
                     ordering = false;
                     break;
                 case 0: // cancel order ( use .remove to extract from order object)
-                    // dont do that actually just stop the loop and maybe ask to restart?
+                    // do not do that actually just stop the loop and maybe ask to restart?
                     ordering = false;
                     break;
                 //todo add default case for invalid input

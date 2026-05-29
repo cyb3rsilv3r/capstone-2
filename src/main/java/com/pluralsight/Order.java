@@ -77,6 +77,7 @@ sideOrders = new ArrayList<>();
     }
 
     public boolean isValidOrder() {
+
         return !pizzas.isEmpty() || !drinks.isEmpty() || !sideOrders.isEmpty();
     }
 }
